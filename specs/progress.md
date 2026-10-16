@@ -7,7 +7,7 @@ Phases are defined in `specs/gep-qa/plan.md` (D-19). Update this table at the en
 |-------|------|--------|------------|-------|
 | 0 Foundation | Scaffold, decisions, spec, plan, eval questions | Done | PDF dumped and inspected; model IDs confirmed | `npm run dump:pdf` writes `.scratch/dump/`; models confirmed (D-21); DB up, key present |
 | 1 Walking skeleton | Crude end-to-end CLI, no structure | Blocked | 10 questions run by eye; failure baseline recorded | Code built (`npm run ingest`, `npm run ask`); 560 of 582 chunks embedded (pages 1-190); Gemini embedding daily quota exhausted, so remaining 22 chunks, the 10-question baseline and the 4 chat calls are pending |
-| 2 Structure-aware ingestion | Clean text, validated structure, section chunks | Not started | Idempotent ingest; re-run vs Phase 1 | |
+| 2 Structure-aware ingestion | Clean text, validated structure, section chunks | In progress (offline parts built; embedding/ingest pending quota reset and Phase 1 baseline) | Idempotent ingest; re-run vs Phase 1 | `npm run inspect:structure` (clean + structure + chunk, 290 chunks, validator OK) and `npm run test:route`; no ingest script yet on purpose, see `specs/gep-qa/phase2-offline-notes.md` |
 | 3 Routing + eval harness | Router, filters, hit@10 / MRR | Not started | Baseline numbers; Q1-Q9 retrieve correctly | |
 | 4 Answer + API + UI | Cited answers in the task-1 UI | Not started | Questions answered in browser with sources | |
 | 5 Experiments | Parent-child, hybrid, reranker, key tables | Not started | Table of what each technique added | |
@@ -45,3 +45,11 @@ Filled from Phase 1 onward (retrieval-only, 10 questions in `specs/gep-qa/eval-q
 - One retrieval-only query (Q1) ran before quota ran out: top hits were South Asia pages 74-76 (hit at rank 1). Other 9 questions, chat calls (0 used) and `phase1-baseline.md` not done.
 - Note: the task-1/task-3 DB containers were found stopped by something outside this session; task-2 db restarted on 5432.
 - Next: after quota resets, `npm run ingest` (resumes), run the 10 questions, write baseline, update the Eval scores table.
+
+## 2026-10-16 (Phase 2 offline parts, no API/DB use)
+- Built `src/lib/rag/{clean,structure,chunk-sections,route,regions,dump}.ts`, `scripts/inspect-structure.mts` (`npm run inspect:structure`), `scripts/test-route.mts` (`npm run test:route`); config got new Phase 2 constants only (Phase 1 scripts untouched, DB and Gemini not used).
+- Validator on the Phase 0 dump: all 96 expected headings found (86 TOC entries incl. 4 chapter titles, 5 annexes, 4 boxes, Executive Summary); 1 alias (TOC "Regional developments" = heading "Recent developments"); bookmark disagreements reported: South Asia (95 vs 96) and Latin America listed before Europe and Central Asia. Digit check and known-facts check pass.
+- Expected Phase 2 chunk count: 290 (Phase 1: 582), median ~427 tokens. Router: 46/46 unit cases pass.
+- Decisions D-22 to D-25 appended. Notes and the safe ingest plan: `specs/gep-qa/phase2-offline-notes.md`.
+- Next: after the quota resets, run the Phase 1 baseline against the current chunks FIRST, then build the Phase 2 ingest (second `documents` row, see notes).
+- Applied D-27/D-28 (D-30): heading paths now `Chapter N (Topic) > ...`, chapter intros `... > Overview`, Ch2 overview sections under `Overview`. Re-run: validator OK, 290 chunks (unchanged), router 46/46. Storage plan = second documents row (D-26).

@@ -18,3 +18,13 @@ export const SEND_K = 5;
 export const CLEAN_VERSION = 0; // 0 = no cleaning
 export const CHUNK_VERSION = 1;
 export const STRUCTURE_VERSION = 0; // 0 = no structure
+
+// Phase 2 (structure-aware ingestion, offline parts). New constants only; Phase 1 values above are untouched.
+export const PHASE2_CLEAN_VERSION = 1;
+export const PHASE2_STRUCTURE_VERSION = 1;
+export const PHASE2_CHUNK_VERSION = 1;
+export const SECTION_CHUNK_MAX_CHARS = 2000; // ~500 tokens at ~4 chars/token, overlap included
+export const SECTION_CHUNK_PIECE_CHARS = 1800; // max new text per chunk, leaving room for the overlap
+export const SECTION_CHUNK_OVERLAP_CHARS = 200; // ~50 tokens, only inside one section
+export const SECTION_CHUNK_MIN_TAIL_CHARS = 350; // a shorter last piece is merged into the previous one
+export const SECTION_CHUNK_TINY_CHARS = 300; // sections shorter than this stay whole (reported, never merged)

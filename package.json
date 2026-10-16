@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "dump:pdf": "tsx scripts/dump-pdf.mts",
+    "inspect:structure": "tsx scripts/inspect-structure.mts",
+    "test:route": "tsx scripts/test-route.mts",
     "ingest": "tsx --env-file=.env.local scripts/ingest.mts",
     "ask": "tsx --env-file=.env.local scripts/ask.mts",
     "lint": "eslint",
