@@ -28,3 +28,10 @@ export const SECTION_CHUNK_PIECE_CHARS = 1800; // max new text per chunk, leavin
 export const SECTION_CHUNK_OVERLAP_CHARS = 200; // ~50 tokens, only inside one section
 export const SECTION_CHUNK_MIN_TAIL_CHARS = 350; // a shorter last piece is merged into the previous one
 export const SECTION_CHUNK_TINY_CHARS = 300; // sections shorter than this stay whole (reported, never merged)
+
+// Phase 4: the two indexed copies of the report (D-26). The web app picks one by name.
+export const FIXED_DOCUMENT_NAME = DOCUMENT_NAME; // Phase 1 fixed-size chunks (the failure baseline)
+export const STRUCTURED_DOCUMENT_NAME = "GEP June 2026 (structured, phase 2)"; // Phase 2 section-bounded chunks
+
+// Phase 3: pipeline name recorded in the structured document's config.
+export const STRUCTURED_PIPELINE = "phase2-structured";

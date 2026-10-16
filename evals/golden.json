@@ -1,0 +1,496 @@
+{
+ "status": "DRAFT from specs/gep-qa/eval-questions.md (D-14)",
+ "notes": "Page ranges are PDF pages (printed + 22; chapter/region ranges from .scratch/phase2/sections.json). Structured chunks are matched on chapter/region/kind/box/headingContains/noBox (pdfPages ignored); Phase 1 chunks have no structure and are matched on pdfPages only. expectRefusal items are scored at answer level only.",
+ "items": [
+  {
+   "id": "q1",
+   "question": "What is the growth outlook for South Asia in this report?",
+   "tests": "Sample question; region lookalike",
+   "expected": [
+    {
+     "chapter": 2,
+     "region": "South Asia",
+     "headingContains": " > Outlook",
+     "pdfPages": [
+      [
+       96,
+       98
+      ]
+     ]
+    }
+   ],
+   "forbidden": [
+    {
+     "chapter": 2,
+     "region": "East Asia and Pacific",
+     "pdfPages": [
+      [
+       81,
+       83
+      ]
+     ]
+    },
+    {
+     "chapter": 2,
+     "region": "Europe and Central Asia",
+     "pdfPages": [
+      [
+       84,
+       87
+      ]
+     ]
+    },
+    {
+     "chapter": 2,
+     "region": "Latin America and the Caribbean",
+     "pdfPages": [
+      [
+       88,
+       91
+      ]
+     ]
+    },
+    {
+     "chapter": 2,
+     "region": "Middle East, North Africa, Afghanistan, and Pakistan",
+     "pdfPages": [
+      [
+       92,
+       95
+      ]
+     ]
+    },
+    {
+     "chapter": 2,
+     "region": "Sub-Saharan Africa",
+     "pdfPages": [
+      [
+       99,
+       102
+      ]
+     ]
+    }
+   ],
+   "keyFacts": [
+    "SAR growth softens to 6.3% in 2026, then ~7% a year in 2027-28"
+   ]
+  },
+  {
+   "id": "q2",
+   "question": "What is the growth outlook for East Asia and Pacific?",
+   "tests": "Region lookalike (same wording as Q1)",
+   "expected": [
+    {
+     "chapter": 2,
+     "region": "East Asia and Pacific",
+     "headingContains": " > Outlook",
+     "pdfPages": [
+      [
+       81,
+       83
+      ]
+     ]
+    }
+   ],
+   "forbidden": [
+    {
+     "chapter": 2,
+     "region": "Europe and Central Asia",
+     "pdfPages": [
+      [
+       84,
+       87
+      ]
+     ]
+    },
+    {
+     "chapter": 2,
+     "region": "Latin America and the Caribbean",
+     "pdfPages": [
+      [
+       88,
+       91
+      ]
+     ]
+    },
+    {
+     "chapter": 2,
+     "region": "Middle East, North Africa, Afghanistan, and Pakistan",
+     "pdfPages": [
+      [
+       92,
+       95
+      ]
+     ]
+    },
+    {
+     "chapter": 2,
+     "region": "South Asia",
+     "pdfPages": [
+      [
+       96,
+       98
+      ]
+     ]
+    },
+    {
+     "chapter": 2,
+     "region": "Sub-Saharan Africa",
+     "pdfPages": [
+      [
+       99,
+       102
+      ]
+     ]
+    }
+   ],
+   "keyFacts": [
+    "EAP moderates to 4.2% in 2026 from 5.0% in 2025; 4.3% in 2027-28"
+   ]
+  },
+  {
+   "id": "q3",
+   "question": "What growth does the report forecast for Sub-Saharan Africa in 2026, and how was it revised?",
+   "tests": "Region lookalike plus a revision detail",
+   "expected": [
+    {
+     "chapter": 2,
+     "region": "Sub-Saharan Africa",
+     "headingContains": " > Outlook",
+     "pdfPages": [
+      [
+       99,
+       102
+      ]
+     ]
+    }
+   ],
+   "forbidden": [
+    {
+     "chapter": 2,
+     "region": "East Asia and Pacific",
+     "pdfPages": [
+      [
+       81,
+       83
+      ]
+     ]
+    },
+    {
+     "chapter": 2,
+     "region": "Europe and Central Asia",
+     "pdfPages": [
+      [
+       84,
+       87
+      ]
+     ]
+    },
+    {
+     "chapter": 2,
+     "region": "Latin America and the Caribbean",
+     "pdfPages": [
+      [
+       88,
+       91
+      ]
+     ]
+    },
+    {
+     "chapter": 2,
+     "region": "Middle East, North Africa, Afghanistan, and Pakistan",
+     "pdfPages": [
+      [
+       92,
+       95
+      ]
+     ]
+    },
+    {
+     "chapter": 2,
+     "region": "South Asia",
+     "pdfPages": [
+      [
+       96,
+       98
+      ]
+     ]
+    }
+   ],
+   "keyFacts": [
+    "~4% in 2026, revised down 0.3 pp since January; 4.4% average in 2027-28"
+   ]
+  },
+  {
+   "id": "q4",
+   "question": "How is India's growth expected to change in fiscal year 2026/27?",
+   "tests": "Country name that must map to a region",
+   "expected": [
+    {
+     "chapter": 2,
+     "region": "South Asia",
+     "headingContains": " > Outlook",
+     "pdfPages": [
+      [
+       96,
+       98
+      ]
+     ]
+    }
+   ],
+   "forbidden": [
+    {
+     "chapter": 2,
+     "region": "East Asia and Pacific",
+     "pdfPages": [
+      [
+       81,
+       83
+      ]
+     ]
+    },
+    {
+     "chapter": 2,
+     "region": "Europe and Central Asia",
+     "pdfPages": [
+      [
+       84,
+       87
+      ]
+     ]
+    },
+    {
+     "chapter": 2,
+     "region": "Latin America and the Caribbean",
+     "pdfPages": [
+      [
+       88,
+       91
+      ]
+     ]
+    },
+    {
+     "chapter": 2,
+     "region": "Middle East, North Africa, Afghanistan, and Pakistan",
+     "pdfPages": [
+      [
+       92,
+       95
+      ]
+     ]
+    },
+    {
+     "chapter": 2,
+     "region": "Sub-Saharan Africa",
+     "pdfPages": [
+      [
+       99,
+       102
+      ]
+     ]
+    }
+   ],
+   "keyFacts": [
+    "India moderates to 6.6% in FY2026/27"
+   ]
+  },
+  {
+   "id": "q5",
+   "question": "What does the report forecast for Pakistan's growth?",
+   "tests": "Country-to-region trap: Pakistan is in the MNA section, not South Asia",
+   "expected": [
+    {
+     "chapter": 2,
+     "region": "Middle East, North Africa, Afghanistan, and Pakistan",
+     "pdfPages": [
+      [
+       92,
+       95
+      ]
+     ]
+    }
+   ],
+   "forbidden": [
+    {
+     "chapter": 2,
+     "region": "South Asia",
+     "pdfPages": [
+      [
+       96,
+       98
+      ]
+     ]
+    }
+   ],
+   "keyFacts": [
+    "Pakistan is covered in the MNA section; figures mostly in Table 2.8 (not indexed, D-12), so a partial answer or honest not-found is acceptable"
+   ]
+  },
+  {
+   "id": "q6",
+   "question": "What does Chapter 3 say about sovereign debt in developing economies?",
+   "tests": "Sample question; chapter-level question",
+   "expected": [
+    {
+     "chapter": 3,
+     "pdfPages": [
+      [
+       107,
+       142
+      ]
+     ]
+    }
+   ],
+   "forbidden": [
+    {
+     "chapter": 4,
+     "pdfPages": [
+      [
+       143,
+       183
+      ]
+     ]
+    }
+   ],
+   "keyFacts": [
+    "Rising EMDE government debt raises interest rates, debt-service payments and default risk; non-linear relationship"
+   ]
+  },
+  {
+   "id": "q7",
+   "question": "How do commodity-exporting economies manage fiscal policy over commodity price swings?",
+   "tests": "Chapter confusion: Ch 3 vs Ch 4",
+   "expected": [
+    {
+     "chapter": 4,
+     "pdfPages": [
+      [
+       143,
+       183
+      ]
+     ]
+    }
+   ],
+   "forbidden": [
+    {
+     "chapter": 3,
+     "pdfPages": [
+      [
+       107,
+       142
+      ]
+     ]
+    }
+   ],
+   "keyFacts": [
+    "Fiscal positions weaker and more volatile; windfalls spent rather than saved; fiscal rules, SWFs, councils help"
+   ]
+  },
+  {
+   "id": "q8",
+   "question": "According to the executive summary, what are the main risks to the global outlook?",
+   "tests": "Sample question; near-duplicate text (Ch 1 summary repeats the paragraph)",
+   "expected": [
+    {
+     "kind": "exec_summary",
+     "pdfPages": [
+      [
+       19,
+       20
+      ]
+     ]
+    }
+   ],
+   "forbidden": [
+    {
+     "chapter": 1,
+     "headingContains": " > Summary",
+     "pdfPages": [
+      [
+       25,
+       35
+      ]
+     ]
+    },
+    {
+     "chapter": 1,
+     "headingContains": " > Risks to the outlook",
+     "pdfPages": [
+      [
+       52,
+       56
+      ]
+     ]
+    },
+    {
+     "chapter": 1,
+     "headingContains": " > Overview",
+     "pdfPages": [
+      [
+       23,
+       25
+      ]
+     ]
+    }
+   ],
+   "keyFacts": [
+    "Risks skewed to the downside; global growth could fall to 1.3% in 2026; trade policy uncertainty; upside from AI"
+   ]
+  },
+  {
+   "id": "q9",
+   "question": "How much could AI affect global growth, according to the report?",
+   "tests": "Box as its own unit",
+   "expected": [
+    {
+     "box": "Box 1.1",
+     "pdfPages": [
+      [
+       30,
+       35
+      ]
+     ]
+    }
+   ],
+   "forbidden": [
+    {
+     "chapter": 1,
+     "noBox": true,
+     "pdfPages": [
+      [
+       23,
+       29
+      ],
+      [
+       36,
+       68
+      ]
+     ]
+    },
+    {
+     "chapter": 3,
+     "pdfPages": [
+      [
+       107,
+       142
+      ]
+     ]
+    }
+   ],
+   "keyFacts": [
+    "Near term: higher investment; medium term: productivity; wide range of estimates; optimistic scenario"
+   ]
+  },
+  {
+   "id": "q10",
+   "question": "What does the report forecast for cryptocurrency prices?",
+   "tests": "Unanswerable: the system must refuse",
+   "expected": [],
+   "forbidden": [],
+   "keyFacts": [
+    "The report contains no such forecast; answer must be the refusal text"
+   ],
+   "expectRefusal": true
+  }
+ ]
+}

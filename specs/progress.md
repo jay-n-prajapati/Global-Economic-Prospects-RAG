@@ -7,9 +7,9 @@ Phases are defined in `specs/gep-qa/plan.md` (D-19). Update this table at the en
 |-------|------|--------|------------|-------|
 | 0 Foundation | Scaffold, decisions, spec, plan, eval questions | Done | PDF dumped and inspected; model IDs confirmed | `npm run dump:pdf` writes `.scratch/dump/`; models confirmed (D-21); DB up, key present |
 | 1 Walking skeleton | Crude end-to-end CLI, no structure | Blocked | 10 questions run by eye; failure baseline recorded | Code built (`npm run ingest`, `npm run ask`); 560 of 582 chunks embedded (pages 1-190); Gemini embedding daily quota exhausted, so remaining 22 chunks, the 10-question baseline and the 4 chat calls are pending |
-| 2 Structure-aware ingestion | Clean text, validated structure, section chunks | In progress (offline parts built; embedding/ingest pending quota reset and Phase 1 baseline) | Idempotent ingest; re-run vs Phase 1 | `npm run inspect:structure` (clean + structure + chunk, 290 chunks, validator OK) and `npm run test:route`; no ingest script yet on purpose, see `specs/gep-qa/phase2-offline-notes.md` |
-| 3 Routing + eval harness | Router, filters, hit@10 / MRR | Not started | Baseline numbers; Q1-Q9 retrieve correctly | |
-| 4 Answer + API + UI | Cited answers in the task-1 UI | Not started | Questions answered in browser with sources | |
+| 2 Structure-aware ingestion | Clean text, validated structure, section chunks | Built (awaiting a live run) | Idempotent ingest; re-run vs Phase 1 | Offline modules + `npm run ingest:structured` (dry-run verified: 290 chunks, 15 embed requests, second `documents` row, D-26). Not run: waits for the Phase 1 baseline and the quota reset. See `specs/gep-qa/phase2-offline-notes.md` |
+| 3 Routing + eval harness | Router, filters, hit@10 / MRR | Built (awaiting a live run) | Baseline numbers; Q1-Q9 retrieve correctly | `retrieve.ts`, `eval-score.ts`, `evals/golden.json`, `npm run eval`; `test:route` 46/46, `test:retrieve`, `test:eval` pass offline. Never run against the DB/API. See `phase3-notes.md` |
+| 4 Answer + API + UI | Cited answers in the task-1 UI | Built (awaiting a live run) | Questions answered in browser with sources | `answer.ts`, `/api/ask`, ported UI; `tsc`, eslint (new code), `next build`, `test:answer` 16/16, `test:client` 25/25 pass. Real retrieval, Gemini citations and browser layout unverified. See `phase4-notes.md` |
 | 5 Experiments | Parent-child, hybrid, reranker, key tables | Not started | Table of what each technique added | |
 | 6 Hardening | Compose run, audit, README | Not started | Fresh clone works | |
 
