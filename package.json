@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "dump:pdf": "tsx scripts/dump-pdf.mts",
+    "ingest": "tsx --env-file=.env.local scripts/ingest.mts",
+    "ask": "tsx --env-file=.env.local scripts/ask.mts",
     "lint": "eslint",
     "db:generate": "node --env-file=.env.local node_modules/drizzle-kit/bin.cjs generate",
     "db:migrate": "node --env-file=.env.local node_modules/drizzle-kit/bin.cjs migrate"
