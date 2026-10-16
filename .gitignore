@@ -44,3 +44,6 @@ next-env.d.ts
 /data/*.pdf
 /data/extracted/
 !.env.example
+
+# scratch output (dump-pdf and other inspection)
+/.scratch/

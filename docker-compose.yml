@@ -1,11 +1,13 @@
+name: task-2
+
 services:
   db:
     image: pgvector/pgvector:pg17
     restart: unless-stopped
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_USER: ${POSTGRES_USER:-task2}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
-      POSTGRES_DB: ${POSTGRES_DB:-app}
+      POSTGRES_DB: ${POSTGRES_DB:-task2_rag}
     command: >
       postgres
       -c shared_buffers=128MB
@@ -36,7 +38,7 @@ services:
       db:
         condition: service_healthy
     environment:
-      DATABASE_URL: postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@db:5432/${POSTGRES_DB:-app}
+      DATABASE_URL: postgres://${POSTGRES_USER:-task2}:${POSTGRES_PASSWORD:-postgres}@db:5432/${POSTGRES_DB:-task2_rag}
       NODE_OPTIONS: --max-old-space-size=192
       GEMINI_API_KEY: ${GEMINI_API_KEY:?set in .env}
     ports:
